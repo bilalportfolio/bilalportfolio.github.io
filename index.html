@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muhammad Bilal Mehdi | Web Portfolio 2026</title>
+<style>
+/* ===== Tokens ===== */
+:root{--bg:#F8F9FA;--h:#1E293B;--b:#475569;--card:rgba(255,255,255,.72);--bd:rgba(226,232,240,.8);--sage:#CFE3D6;--indigo:#D9DEFB;--rose:#F6D5DC;--ac:#4F46E5;--spring:cubic-bezier(.34,1.56,.64,1);--font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter','Segoe UI',Roboto,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--b);font:16px/1.65 var(--font);letter-spacing:.005em}
+h1,h2,h3{color:var(--h);line-height:1.15;letter-spacing:-.02em;margin:0 0 .4em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+button,select,input{font:inherit}
+button{cursor:pointer;transition:transform .35s var(--spring),box-shadow .3s,filter .2s}
+button:active{transform:scale(.97)}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+/* ===== Hero ===== */
+.hero{padding:72px 0 48px}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:800}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 22px}
+.badge{background:var(--card);border:1px solid var(--bd);backdrop-filter:blur(10px);border-radius:99px;padding:6px 14px;font-size:.88rem;font-weight:600;color:var(--h)}
+.hero p{max-width:60ch;font-size:1.08rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-block;text-decoration:none;border:1px solid var(--bd);border-radius:14px;padding:12px 22px;font-weight:600;background:var(--card);color:var(--h);backdrop-filter:blur(10px)}
+.btn.main{background:#4F46E5;color:#fff;border-color:transparent}
+.btn:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 14px 28px -12px rgba(79,70,229,.45)}
+/* ===== Grid ===== */
+section{padding:56px 0}
+.sec-h{font-size:clamp(1.6rem,4vw,2.2rem)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:20px;margin-top:24px}
+.card{background:var(--card);border:1px solid var(--bd);backdrop-filter:blur(12px);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:transform .4s var(--spring),box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 18px 36px -18px rgba(30,41,59,.35);border-color:var(--c)}
+.ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:1.6rem;background:var(--bg2)}
+.meta{font-size:.85rem;font-weight:600;color:var(--c)}
+.card p{margin:0;flex:1}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:.76rem;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--bg2);color:#1E293B}
+.launch{border:0;border-radius:12px;padding:11px 16px;font-weight:700;color:#fff;background:var(--c)}
+.launch:hover{transform:translateY(-2px) scale(1.02)}
+/* ===== Skills ===== */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px 36px;margin-top:24px}
+.sk b{color:var(--h)}.sk small{display:block}
+.bar{height:10px;border-radius:9px;background:var(--bd);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#818CF8,#F9A8D4)}
+footer{text-align:center;padding:36px 20px;border-top:1px solid var(--bd);font-size:.92rem}
+footer a{color:var(--h)}
+/* ===== Modal / app shell ===== */
+.modal{position:fixed;inset:0;z-index:50;overflow:auto;background:var(--abg,#EEF2FF);color:#1E293B;display:flex;flex-direction:column;animation:pop .4s var(--spring)}
+.modal[hidden]{display:none}
+@keyframes pop{from{opacity:0;transform:scale(.97)}}
+.topbar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;background:rgba(255,255,255,.75);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.06)}
+.topbar b{font-size:.95rem}
+.back{border:0;border-radius:11px;padding:9px 14px;font-weight:700;background:var(--ac);color:#fff}
+#stage{width:100%;max-width:780px;margin:0 auto;padding:22px 16px calc(40px + env(safe-area-inset-bottom,0px))}
+#stage h2{color:#1E293B}
+.panel{background:#fff;border-radius:24px;padding:22px;box-shadow:0 20px 40px -24px rgba(30,41,59,.35)}
+.panel.dk{background:#0F172A;color:#E2E8F0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.p{background:var(--ac);color:#fff;border:0;border-radius:12px;padding:10px 16px;font-weight:600}
+.p.o{background:transparent;color:var(--ac);border:2px solid var(--ac)}
+.p:hover{transform:translateY(-2px) scale(1.02)}
+.in{border:2px solid rgba(0,0,0,.1);border-radius:12px;padding:10px 12px;background:#fff;color:#1E293B;min-width:0;flex:1 1 160px}
+.in:focus{border-color:var(--ac);outline:0}
+.big{font-size:clamp(2.2rem,9vw,3.6rem);font-weight:800;font-variant-numeric:tabular-nums;color:var(--ac)}
+.note{font-size:.82rem;opacity:.7}
+/* calculator */
+.kb{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.kb button{border:0;border-radius:14px;padding:14px 0;font-size:1.05rem;font-weight:600;background:#F3E8FF;color:#4C1D95}
+.kb button.op{background:#DDD0FB}.kb .eq{grid-column:1/-1;background:var(--ac);color:#fff}
+.scr{background:#F5F3FF;border-radius:16px;padding:14px;text-align:right;min-height:84px;overflow:hidden}
+.scr small{display:block;min-height:1.4em;word-break:break-all;opacity:.7}.scr strong{font-size:2rem}
+.hist{max-height:160px;overflow:auto;margin-top:14px;font-size:.9rem;border-top:1px dashed #DDD;padding-top:8px}
+.hist div{padding:3px 0}
+/* todo */
+.todo{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #EEE}
+.todo input{width:20px;height:20px;accent-color:var(--ac)}
+.t{flex:1;background:linear-gradient(currentColor,currentColor) no-repeat 0 55%/0 2px;transition:background-size .35s,opacity .35s}
+.todo.done .t{background-size:100% 2px;opacity:.5}
+.tag{font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;color:#fff}
+.High{background:#DC2626}.Medium{background:#D97706}.Low{background:#16A34A}
+.x{border:0;background:none;font-size:1.1rem;color:#94A3B8}
+/* converter / weather / password / 3d */
+.res{background:#FFF7ED;border-radius:16px;padding:16px;margin-top:10px}
+.fc{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.fc div{background:#EFF6FF;border-radius:16px;padding:12px;text-align:center}
+.wi{font-size:4rem;display:inline-block}
+.a-sun{animation:spin 14s linear infinite}.a-rain{animation:bob 1.4s ease-in-out infinite}.a-cloud{animation:drift 4s ease-in-out infinite alternate}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes bob{50%{transform:translateY(8px)}}@keyframes drift{to{transform:translateX(14px)}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-top:14px}
+.stats div{background:#F1F5F9;border-radius:14px;padding:10px;text-align:center}
+.pw{font:700 1.3rem ui-monospace,Menlo,monospace;word-break:break-all;background:#FFFBEB;border-radius:14px;padding:16px;min-height:60px}
+.meter{height:12px;border-radius:9px;background:#EEE;overflow:hidden}.meter i{display:block;height:100%;width:0;transition:width .4s,background .4s}
+.stage3{perspective:900px;display:grid;place-items:center;padding:28px;background:#E0E7FF;border-radius:20px}
+.tilt{width:230px;height:150px;border-radius:20px;background:linear-gradient(135deg,#6366F1,#C084FC);color:#fff;display:grid;place-items:center;font-weight:800;transition:transform .15s ease-out;box-shadow:0 24px 40px -16px rgba(79,70,229,.6)}
+.orbt{height:70px;background:#E0E7FF;border-radius:16px;padding:10px;overflow:hidden}
+.orb{width:48px;height:48px;border-radius:12px;background:var(--ac);animation:orb 3s ease-in-out infinite alternate}
+@keyframes orb{to{transform:translateX(min(560px,70vw)) rotate(270deg);border-radius:50%}}
+.flip{perspective:900px;width:230px;height:150px;margin:0 auto}
+.fi{position:relative;width:100%;height:100%;transition:transform .8s var(--spring);transform-style:preserve-3d;border:0;background:none;padding:0}
+.fi.on{transform:rotateY(180deg)}
+.fi>span{position:absolute;inset:0;display:grid;place-items:center;border-radius:20px;font-weight:800;backface-visibility:hidden;background:#fff;color:var(--ac);border:3px solid var(--ac)}
+.fi>span+span{transform:rotateY(180deg);background:var(--ac);color:#fff}
+/* ===== Era styling: each app looks like the skill level of its year ===== */
+.y2023 h2{font:700 1.3rem Arial,sans-serif}
+.y2023 .panel{border-radius:3px;box-shadow:none;border:2px solid #0284C7;font-family:Arial,sans-serif}
+.y2023 .p,.y2023 .p.o{border-radius:2px;transition:none;font-weight:400;font-family:Arial,sans-serif}
+.y2023 .p:hover,.y2023 .p:active{transform:none}
+.y2023 .big{font-family:'Courier New',monospace;font-weight:400;color:#000}
+.y2023 .in{border:1px solid #777;border-radius:0}
+.y2023 svg{display:none}
+.y2024 .panel{border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.14)}
+.y2024 .p,.y2024 .kb button{border-radius:8px;transition:filter .2s}
+.y2024 .p:hover,.y2024 .p:active,.y2024 .kb button:active{transform:none;filter:brightness(1.12)}
+.y2024 .t{transition:none}
+.y2025 .panel{border-radius:20px;box-shadow:0 10px 24px -14px rgba(30,41,59,.4)}
+.y2025 .p:hover{transform:translateY(-2px)}
+.y2026 .panel{background:rgba(255,255,255,.72);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);border-radius:28px;box-shadow:0 30px 60px -28px rgba(217,119,6,.55)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<!-- ===== HERO ===== -->
+<header class="hero"><div class="wrap">
+  <h1>Muhammad Bilal Mehdi</h1>
+  <div class="badges"><span class="badge">15-Year-Old Front-End Developer</span><span class="badge">Web Portfolio 2026</span><span class="badge">6 Functional Applications</span></div>
+  <p>I'm Bilal, a student from Karachi who loves Computer Science, Physics and Mathematics. I taught myself front-end development by building small tools I actually wanted to use, from a clock in Grade 8 to a password generator in Grade 11. Every app below runs in plain HTML, CSS and JavaScript.</p>
+  <div class="cta"><a class="btn main" href="#apps">Explore Applications</a><a class="btn" href="mailto:muhammadbilalmehdi2026@gmail.com">Email me</a></div>
+</div></header>
+
+<main>
+<section id="apps"><div class="wrap">
+  <h2 class="sec-h">Six apps, four years of learning</h2>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+</main>
+
+<footer>Designed, Coded, and Maintained by Muhammad Bilal Mehdi | Contact: <a href="mailto:muhammadbilalmehdi2026@gmail.com">muhammadbilalmehdi2026@gmail.com</a></footer>
+
+<!-- ===== APP MODAL ===== -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-label="Application">
+  <div class="topbar"><b>Made by Muhammad Bilal Mehdi</b><button class="back" id="back">Return to Portfolio</button></div>
+  <div id="stage"></div>
+</div>
+
+<script>
+/* ===== Helpers ===== */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const z2=n=>String(n).padStart(2,'0');
+let clean=[];
+const on=(t,e,f)=>{t.addEventListener(e,f);clean.push(()=>t.removeEventListener(e,f))};
+const every=(f,ms)=>{f();const i=setInterval(f,ms);clean.push(()=>clearInterval(i))};
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* ===== 1. Clock ===== */
+function clock(el){
+  const zones=[['Karachi','Asia/Karachi'],['London','Europe/London'],['New York','America/New_York'],['Tokyo','Asia/Tokyo'],['Dubai','Asia/Dubai'],['Sydney','Australia/Sydney']];
+  let h12=false;
+  el.innerHTML=`<div class="panel" id="cc" style="text-align:center"><div class="big" id="dg"></div><p id="dd"></p>
+  <svg viewBox="-50 -50 100 100" width="190" height="190" role="img" aria-label="Analog clock"><circle r="47" fill="none" stroke="currentColor" stroke-width="1.5"/><g id="tk"></g>
+  <line id="hh" y2="-22" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line id="mh" y2="-33" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line id="sh" y2="-38" stroke="#0284C7" stroke-width="1" stroke-linecap="round"/><circle r="2" fill="#0284C7"/></svg>
+  <div class="row" style="justify-content:center"><select class="in" id="tz" style="flex:none" aria-label="Time zone">${zones.map(z=>`<option value="${z[1]}">${z[0]}</option>`).join('')}</select><button class="p" id="f">12 / 24 hour</button><button class="p o" id="t">Light / Dark card</button></div></div>`;
+  $('#tk',el).innerHTML=[...Array(12)].map((_,i)=>`<line y1="-44" y2="-40" stroke="currentColor" stroke-width="2" transform="rotate(${i*30})"/>`).join('');
+  const rot=(id,d)=>$(id,el).setAttribute('transform',`rotate(${d})`);
+  $('#f',el).onclick=()=>h12=!h12;
+  $('#t',el).onclick=()=>$('#cc',el).classList.toggle('dk');
+  every(()=>{
+    const tz=$('#tz',el).value,d=new Date(),p={};
+    new Intl.DateTimeFormat('en-GB',{timeZone:tz,hour:'numeric',minute:'numeric',second:'numeric',hourCycle:'h23'}).formatToParts(d).forEach(x=>{if(x.type!=='literal')p[x.type]=+x.value});
+    let h=p.hour,sfx='';if(h12){sfx=h>=12?' PM':' AM';h=h%12||12}
+    $('#dg',el).textContent=z2(h)+':'+z2(p.minute)+':'+z2(p.second)+sfx;
+    $('#dd',el).textContent=d.toLocaleDateString('en-GB',{timeZone:tz,weekday:'long',day:'numeric',month:'long'});
+    rot('#sh',p.second*6);rot('#mh',p.minute*6+p.second/10);rot('#hh',(p.hour%12)*30+p.minute/2);
+  },1000);
+}
+
+/* ===== 2. Calculator ===== */
+function calc(el){
+  const keys=['MC','MR','M+','C','sin(','cos(','tan(','⌫','sqrt(','log(','^','/','7','8','9','*','4','5','6','-','1','2','3','+','(',')','0','.','='];
+  const F={sin:x=>Math.sin(x*Math.PI/180),cos:x=>Math.cos(x*Math.PI/180),tan:x=>Math.tan(x*Math.PI/180),sqrt:Math.sqrt,log:Math.log10};
+  let ex='',res='0',mem=0,hist=store.get('bm_calc',[]);
+  el.innerHTML=`<div class="panel"><div class="scr"><small id="ex"></small><strong id="rs">0</strong></div>
+  <p class="note">Trig functions use degrees. Keyboard: digits, + - * / ^ ( ), Enter, Backspace, Esc.</p>
+  <div class="kb">${keys.map(k=>`<button data-k="${k}" class="${/^[\/*\-+^]$/.test(k)||k.endsWith('(')?'op':''} ${k==='='?'eq':''}">${k.replace('*','×').replace('/','÷')}</button>`).join('')}</div>
+  <div class="hist" id="hs" aria-label="History"></div></div>`;
+  const draw=()=>{$('#ex',el).textContent=ex;$('#rs',el).textContent=res;$('#hs',el).innerHTML=hist.length?hist.map(h=>`<div>${h}</div>`).join(''):'<span class="note">History appears here.</span>'};
+  const ev=()=>{
+    let s=ex.replace(/\^/g,'**'),bad=false;
+    s=s.replace(/[a-z]+/g,m=>F[m]?'F.'+m:(bad=true,''));
+    if(bad)throw 0;
+    s+=')'.repeat(Math.max(0,(s.match(/\(/g)||[]).length-(s.match(/\)/g)||[]).length));
+    const r=Function('F','"use strict";return ('+s+')')(F);
+    if(!isFinite(r))throw 0;return +r.toPrecision(12);
+  };
+  const press=k=>{
+    try{
+      if(k==='C'){ex='';res='0'}
+      else if(k==='⌫')ex=ex.slice(0,-1);
+      else if(k==='MC')mem=0;
+      else if(k==='MR')ex+=mem;
+      else if(k==='M+'){mem+=ex?ev():+res}
+      else if(k==='='){if(ex){const r=ev();hist=[ex+' = '+r,...hist].slice(0,30);store.set('bm_calc',hist);res=String(r);ex=''}}
+      else ex+=k;
+    }catch(e){res='Error';ex=''}
+    draw();
+  };
+  $$('.kb button',el).forEach(b=>b.onclick=()=>press(b.dataset.k));
+  on(document,'keydown',e=>{
+    if(e.target.matches('input,select'))return;
+    if(/^[0-9+\-*/().^]$/.test(e.key))press(e.key);
+    else if(e.key==='Enter'||e.key==='='){e.preventDefault();press('=')}
+    else if(e.key==='Backspace')press('⌫');
+    else if(e.key==='Escape')press('C');
+  });
+  draw();
+}
+
+/* ===== 3. To-Do ===== */
+function todo(el){
+  let items=store.get('bm_todos',[]),flt='All';
+  el.innerHTML=`<div class="panel"><div class="row"><input class="in" id="ti" placeholder="What needs doing?" aria-label="New task"><select class="in" id="tp" style="flex:none"><option>High</option><option selected>Medium</option><option>Low</option></select><button class="p" id="ta">Add task</button></div>
+  <div class="row" id="tf">${['All','Active','Completed'].map(f=>`<button class="p o" data-f="${f}">${f}</button>`).join('')}</div><div id="tl"></div><p class="note" id="tc"></p></div>`;
+  const save=()=>{store.set('bm_todos',items);draw()};
+  const draw=()=>{
+    const v=items.filter(i=>flt==='All'||(flt==='Active')!==i.d);
+    $('#tl',el).innerHTML=v.length?v.map(i=>`<div class="todo ${i.d?'done':''}"><input type="checkbox" data-id="${i.id}" ${i.d?'checked':''} aria-label="Complete"><span class="t">${i.t}</span><span class="tag ${i.p}">${i.p}</span><button class="x" data-del="${i.id}" aria-label="Delete task">✕</button></div>`).join(''):'<p class="note">No tasks here. Add one above.</p>';
+    const done=items.filter(i=>i.d).length;
+    $('#tc',el).textContent=`${items.length} total · ${items.length-done} active · ${done} completed`;
+    $$('#tf button',el).forEach(b=>b.style.background=b.dataset.f===flt?'var(--ac)':'transparent',$$('#tf button',el).forEach(b=>b.style.color=b.dataset.f===flt?'#fff':'var(--ac)'));
+  };
+  const add=()=>{const i=$('#ti',el),t=i.value.trim().replace(/[<>&]/g,'');if(!t)return;items.unshift({id:Date.now(),t,p:$('#tp',el).value,d:false});i.value='';save()};
+  $('#ta',el).onclick=add;$('#ti',el).onkeydown=e=>{if(e.key==='Enter')add()};
+  $('#tf',el).onclick=e=>{if(e.target.dataset.f){flt=e.target.dataset.f;draw()}};
+  $('#tl',el).onclick=e=>{
+    const c=e.target.dataset.id,d=e.target.dataset.del;
+    if(c){const i=items.find(x=>x.id==c);i.d=e.target.checked;save()}
+    if(d){items=items.filter(x=>x.id!=d);save()}
+  };
+  draw();
+}
+
+/* ===== 4. Converter ===== */
+function conv(el){
+  const D={Length:{m:1,km:1000,cm:.01,mm:.001,mi:1609.344,ft:.3048,in:.0254},Mass:{kg:1,g:.001,lb:.45359237,oz:.028349523,t:1000},Temperature:{'°C':1,'°F':1,K:1},Currency:{USD:1,PKR:280,EUR:.92,GBP:.79,JPY:150,AED:3.67}};
+  let cat='Length';
+  el.innerHTML=`<div class="panel"><div class="row" id="ct">${Object.keys(D).map(c=>`<button class="p o" data-c="${c}">${c}</button>`).join('')}</div>
+  <div class="row"><input class="in" id="v" type="number" value="1" aria-label="Value"><select class="in" id="a" aria-label="From"></select><button class="p" id="sw" aria-label="Swap units">⇄</button><select class="in" id="b" aria-label="To"></select></div>
+  <div class="res"><div class="big" id="o"></div><div id="fm"></div><p class="note" id="nt"></p></div></div>`;
+  const fill=()=>{const u=Object.keys(D[cat]);$('#a',el).innerHTML=$('#b',el).innerHTML=u.map(x=>`<option>${x}</option>`).join('');$('#b',el).selectedIndex=1;$$('#ct button',el).forEach(b=>{const a=b.dataset.c===cat;b.style.background=a?'var(--ac)':'transparent';b.style.color=a?'#fff':'var(--ac)'});$('#nt',el).textContent=cat==='Currency'?'Rates are fixed approximations for demo use, not live market rates.':'';calc()};
+  const cv=(x,a,b)=>{
+    if(cat==='Temperature'){const c=a==='°C'?x:a==='°F'?(x-32)*5/9:x-273.15;return b==='°C'?c:b==='°F'?c*9/5+32:c+273.15}
+    return x*D[cat][a]/D[cat][b];
+  };
+  const fmt=n=>+n.toPrecision(8);
+  const calc=()=>{const x=parseFloat($('#v',el).value),a=$('#a',el).value,b=$('#b',el).value;
+    if(isNaN(x)){$('#o',el).textContent='—';$('#fm',el).textContent='Enter a number.';return}
+    $('#o',el).textContent=fmt(cv(x,a,b))+' '+b;
+    $('#fm',el).textContent=cat==='Temperature'?'Formula: convert via °C ((°F − 32) × 5/9, K − 273.15)':`1 ${a} = ${fmt(cv(1,a,b))} ${b}`};
+  $('#ct',el).onclick=e=>{if(e.target.dataset.c){cat=e.target.dataset.c;fill()}};
+  $('#v',el).onkeyup=$('#v',el).oninput=calc;$('#a',el).onchange=$('#b',el).onchange=calc;
+  $('#sw',el).onclick=()=>{const a=$('#a',el),b=$('#b',el),t=a.value;a.value=b.value;b.value=t;calc()};
+  fill();
+}
+
+/* ===== 5. Weather (simulated) ===== */
+function weather(el){
+  const C=[['☀️','Sunny','a-sun'],['🌧️','Rainy','a-rain'],['☁️','Cloudy','a-cloud']];
+  el.innerHTML=`<div class="panel"><div class="row"><input class="in" id="c" value="Karachi" aria-label="City"><button class="p" id="go">Search</button></div><div id="w"></div><p class="note">Weather values are simulated for demonstration, generated from the city name.</p></div>`;
+  const hash=s=>[...s.toLowerCase()].reduce((a,c)=>(a*31+c.charCodeAt(0))>>>0,7);
+  const show=()=>{
+    const city=$('#c',el).value.trim()||'Karachi',h=hash(city),k=C[h%3];
+    $('#w',el).innerHTML=`<div style="text-align:center"><div class="wi ${k[2]}">${k[0]}</div><div class="big">${12+h%27}°C</div><h3>${city.replace(/[<>&]/g,'')} · ${k[1]}</h3></div>
+    <div class="stats"><div>💧 ${35+h%55}%<br><small>Humidity</small></div><div>💨 ${5+h%25} km/h<br><small>Wind</small></div><div>👁️ ${4+h%11} km<br><small>Visibility</small></div></div>
+    <div class="fc">${[1,2,3].map(i=>{const g=hash(city+i),f=C[g%3];return `<div><b>Day ${i}</b><div class="wi ${f[2]}" style="font-size:2.2rem">${f[0]}</div><div>${12+g%27}°C</div></div>`}).join('')}</div>`;
+  };
+  $('#go',el).onclick=show;$('#c',el).onkeydown=e=>{if(e.key==='Enter')show()};show();
+}
+
+/* ===== 6. Password generator ===== */
+function pass(el){
+  const S={u:'ABCDEFGHIJKLMNOPQRSTUVWXYZ',l:'abcdefghijklmnopqrstuvwxyz',n:'0123456789',s:'!@#$%^&*()-_=+[]{};:,.<>?'};
+  el.innerHTML=`<div class="panel"><div class="pw" id="pw" aria-live="polite"></div><div class="row"><label>Length: <b id="ln">16</b><input type="range" id="len" min="6" max="32" value="16" style="width:100%;accent-color:var(--ac)"></label></div>
+  <div class="row">${[['u','Uppercase'],['l','Lowercase'],['n','Numbers'],['s','Symbols']].map(x=>`<label><input type="checkbox" data-s="${x[0]}" checked style="accent-color:var(--ac)"> ${x[1]}</label>`).join(' ')}</div>
+  <div class="meter"><i id="mt"></i></div><p><b id="sl"></b></p><div class="row"><button class="p" id="gen">Generate new</button><button class="p o" id="cp">Copy to clipboard</button></div></div>`;
+  const rnd=n=>crypto.getRandomValues(new Uint32Array(1))[0]%n;
+  const gen=()=>{
+    const sets=$$('[data-s]:checked',el).map(c=>S[c.dataset.s]),L=+$('#len',el).value;
+    $('#ln',el).textContent=L;
+    if(!sets.length){$('#pw',el).textContent='Select at least one character type.';$('#mt',el).style.width='0';$('#sl',el).textContent='';return}
+    const pool=sets.join('');let a=sets.map(s=>s[rnd(s.length)]);
+    while(a.length<L)a.push(pool[rnd(pool.length)]);
+    a=a.slice(0,L);for(let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]]}
+    $('#pw',el).textContent=a.join('');
+    const e=L*Math.log2(pool.length),lv=e<40?['Weak','#DC2626',25]:e<60?['Medium','#F59E0B',50]:e<80?['Strong','#65A30D',75]:['Excellent','#16A34A',100];
+    $('#mt',el).style.width=lv[2]+'%';$('#mt',el).style.background=lv[1];$('#sl',el).textContent='Strength: '+lv[0];
+  };
+  $('#gen',el).onclick=gen;$('#len',el).oninput=gen;$$('[data-s]',el).forEach(c=>c.onchange=gen);
+  $('#cp',el).onclick=async e=>{
+    const b=e.target;try{await navigator.clipboard.writeText($('#pw',el).textContent);b.textContent='✓ Copied';}catch(x){b.textContent='Copy blocked: select and copy manually'}
+    setTimeout(()=>b.textContent='Copy to clipboard',1600);
+  };
+  gen();
+}
+
+/* ===== 7. 3D lab ===== */
+function lab(el){
+  el.innerHTML=`<div class="panel"><h3>Mouse tilt</h3><div class="stage3" id="st"><div class="tilt" id="tl">Move over me</div></div>
+  <h3 style="margin-top:22px">Animation player</h3><div class="orbt"><div class="orb" id="ob"></div></div>
+  <div class="row"><button class="p" id="pl">Play</button><button class="p o" id="pa">Pause</button><label>Speed <input type="range" id="sp" min="0.5" max="4" step="0.5" value="1" style="accent-color:var(--ac)"></label></div>
+  <h3 style="margin-top:22px">Flip card</h3><div class="flip"><button class="fi" id="fl" aria-label="Flip card"><span>Front</span><span>Back</span></button></div></div>`;
+  const st=$('#st',el),tl=$('#tl',el),ob=$('#ob',el);
+  st.onpointermove=e=>{const r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tl.style.transform=`rotateY(${x*30}deg) rotateX(${-y*30}deg) scale(1.04)`};
+  st.onpointerleave=()=>tl.style.transform='';
+  $('#pl',el).onclick=()=>ob.style.animationPlayState='running';
+  $('#pa',el).onclick=()=>ob.style.animationPlayState='paused';
+  $('#sp',el).oninput=e=>ob.style.animationDuration=(3/e.target.value)+'s';
+  $('#fl',el).onclick=e=>e.currentTarget.classList.toggle('on');
+}
+
+/* ===== App registry ===== */
+const APPS=[
+ {t:'Digital Clock & World Time',i:'🕒',y:2023,g:8,c:'#0284C7',bg:'#E0F2FE',d:'A live clock with a 12/24-hour switch, an analog face and a time zone picker, so I can check when my relatives in other countries are awake.',tags:['HTML5','CSS Grid','Vanilla JS','Intl API'],run:clock},
+ {t:'Scientific Calculator',i:'🧮',y:2024,g:9,c:'#7C3AED',bg:'#F3E8FF',d:'Everyday arithmetic plus sin, cos, tan, square root, powers and logs, with memory keys and a history log. Built for checking maths and physics homework.',tags:['HTML5','CSS Grid','Vanilla JS','Local Storage'],run:calc},
+ {t:'To-Do & Task Manager',i:'✅',y:2024,g:9,c:'#16A34A',bg:'#DCFCE7',d:'Add tasks with a priority, tick them off, and filter what is left. Tasks stay saved in the browser, so revision plans survive a refresh.',tags:['HTML5','CSS3','Vanilla JS','Local Storage'],run:todo},
+ {t:'Unit & Currency Converter',i:'🔄',y:2025,g:10,c:'#EA580C',bg:'#FFEDD5',d:'Convert length, mass, temperature and currency instantly as you type. Swap units with one tap and see the formula behind the answer.',tags:['HTML5','CSS Flexbox','Vanilla JS'],run:conv},
+ {t:'Weather Dashboard',i:'⛅',y:2025,g:10,c:'#2563EB',bg:'#E0F2FE',d:'Search a city and get temperature, humidity, wind, visibility and a 3-day outlook with animated icons. Data is simulated, so no sign-up or API key is needed.',tags:['HTML5','CSS Keyframes','Vanilla JS','Web APIs'],run:weather},
+ {t:'Password Generator',i:'🔐',y:2026,g:11,c:'#D97706',bg:'#FEF3C7',d:'Make strong passwords with your choice of length and character types. A strength meter shows how hard it would be to guess, and one tap copies it.',tags:['HTML5','CSS3','Vanilla JS','Web Crypto'],run:pass}
+];
+
+$('#grid').innerHTML=APPS.map((a,n)=>`<article class="card" style="--c:${a.c};--bg2:${a.bg}"><div class="ico" aria-hidden="true">${a.i}</div><h3>${a.t}</h3><div class="meta">Developed ${a.y} · Grade ${a.g}</div><p>${a.d}</p><div class="pills">${a.tags.map(t=>`<span class="pill">${t}</span>`).join('')}</div><button class="launch" data-n="${n}">Launch Application</button></article>`).join('');
+
+/* ===== Modal control ===== */
+const M=$('#modal'),ST=$('#stage');
+function openApp(n){
+  const a=APPS[n];clean.forEach(f=>f());clean=[];
+  M.style.setProperty('--abg',a.bg);M.style.setProperty('--ac',a.c);
+  ST.innerHTML=`<h2>${a.i} ${a.t}</h2><div id="app"></div>`;
+  M.hidden=false;document.body.style.overflow='hidden';M.scrollTop=0;
+  ST.className='y'+a.y;a.run($('#app'));$('#back').focus();
+}
+function closeApp(){clean.forEach(f=>f());clean=[];M.hidden=true;document.body.style.overflow='';ST.innerHTML=''}
+$('#grid').onclick=e=>{const b=e.target.closest('.launch');if(b)openApp(+b.dataset.n)};
+$('#back').onclick=closeApp;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!M.hidden&&!e.target.matches('input'))closeApp()});
+</script>
+</body>
+</html>
